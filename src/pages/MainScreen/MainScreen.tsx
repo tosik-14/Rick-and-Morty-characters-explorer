@@ -1,27 +1,35 @@
-import React, {useCallback} from 'react';
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, {useState, useLayoutEffect, useCallback} from 'react';
+import { Pressable, View, Text, FlatList, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMainScreen } from './useMainScreen';
+import { useCharacters } from './useCharacters';
 import { styles } from './MainScreen.styles';
 import Icon from '../../shared/ui/Icon';
 import CharacterCard from '../../features/characters/components/CharacterCard/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
-/*import { useEffect } from 'react';*/
+import DropDownFilters from '../../features/characters/components/DropDownFilters/DropDownFilters';
+import {globalStyles} from "@/src/shared/styles/globalStyles";
 
+export default function MainScreen({ navigation }) {
+    const [showFilters, setShowFilters] = useState(false);
 
-export default function MainScreen() {
     const {
         characters,
         loading,
         initialLoading,
         loadMore,
+        reset,
         error,
-    } = useMainScreen();
+        filters,
+        setFilter
+    } = useCharacters();
 
     const router = useRouter();
 
+
     const {
         backgroundColor,
+        tint,
+        iconColor,
     } = useThemeColors();
 
     const renderItem = useCallback(({ item }) => (
@@ -43,8 +51,40 @@ export default function MainScreen() {
         );
     }
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress={() => setShowFilters(prev => !prev)}>
+                    <View style={styles.headerFilterButton}>
+                        <Icon name="filter" size={12} color={iconColor}></Icon>
+                        <Text style={[globalStyles.fontR16, { color: tint }]}>Filter</Text>
+                    </View>
+
+                </TouchableOpacity>
+            ),
+        });
+    }, [navigation, tint, iconColor]);
+
     return (
         <View style={[styles.container, {backgroundColor}]}>
+
+            {showFilters && (
+                <Pressable
+                    style={styles.overlay}
+                    onPress={() => setShowFilters(false)} // Закрываем при нажатии вне фильтра
+                >
+                    <Pressable
+                        style={styles.dropdownContainer}
+                        onPress={(e) => e.stopPropagation()} // Предотвращаем всплытие нажатия внутри фильтра
+                    >
+                        <DropDownFilters
+                            filters={filters}
+                            setFilter={setFilter}
+                            close={() => setShowFilters(false)}
+                        />
+                    </Pressable>
+                </Pressable>
+            )}
             <FlatList
                 data={characters}
                 extraData={characters}
@@ -55,13 +95,6 @@ export default function MainScreen() {
                 onEndReachedThreshold={0.5}
 
                 ListFooterComponent={loading ? <ActivityIndicator size="small" /> : null}
-                /*ListFooterComponent={
-                    <ActivityIndicator
-                        size="small"
-                        animating={loading}
-                        style={{ opacity: loading ? 1 : 0, height: loading ? undefined : 0 }}
-                    />
-                }*/
 
                 removeClippedSubviews={true}
                 initialNumToRender={20}

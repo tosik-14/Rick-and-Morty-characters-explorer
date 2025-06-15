@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { getCharacters } from '../../services/api/getCharacters';
+import { getFilteredCharacters } from '../../services/api/getFilteredCharacters';
+import { Character } from '../../entities/character';
 
-export function useMainScreen() {
+export function useCharacters() {
     //const charactersRef = useRef<any[]>([]);
-    const [characters, setCharacters] = useState<any[]>([]);
+    const [characters, setCharacters] = useState<Character[]>([]);
     const [page, setPage] = useState(1);
     //const pageRef = useRef(1);
     const [isNextPage, setIsNextPage] = useState(true);
@@ -11,25 +13,53 @@ export function useMainScreen() {
     const [initialLoading, setInitialLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const [filters, setFilters] = useState<{ status: string, species: string }>({
+        status: '',
+        species: ''
+    });
+
+    const setFilter = (key: 'status' | 'species', value: string) => {
+        setFilters(prev => ({
+            ...prev,
+            [key]: value
+        }));
+    };
+
 
     useEffect(() => { //first render
+        reset();
         loadCharacters(1);
 
-    }, []);
+    }, [filters.status, filters.species]);
 
     const loadCharacters = async (pageToLoad: number) => {
         if (loading || !isNextPage) return;
 
         setLoading(true);
         try {
-            const data = await getCharacters(pageToLoad);
 
-            setCharacters((prev) => {
-                const newCharacters = data.results.filter(
-                    newChar => !prev.some(existingChar => existingChar.id === newChar.id)
-                );
-                return [...prev, ...newCharacters];
-            });
+            const filteredParams = Object.entries(filters)
+                .reduce((acc, [key, value]) => {
+                    if (value.trim() !== '') {
+                        acc[key] = value;
+                    }
+                    return acc;
+                }, {} as Record<string, string>);
+
+            const isEmptyFilters = Object.keys(filteredParams).length === 0;
+
+            const data = isEmptyFilters ? await getCharacters(pageToLoad) : await getFilteredCharacters(pageToLoad, filteredParams);
+
+            /*const newCharacters = data.results.filter(
+                (char: Character) => !characters.some(c => c.id === char.id)
+            );*/
+            if(page === 1) {
+                setCharacters(data.results);
+            } else{
+                setCharacters((prev) => [...prev, ...data.results]);
+            }
+
+
             setIsNextPage(!!data.info.next);
             setPage(pageToLoad + 1);
 
@@ -72,6 +102,13 @@ export function useMainScreen() {
         }
     };
 
+     const reset = async () => {
+        setCharacters([]);
+        setPage(1);
+        setIsNextPage(true);
+        setError(null);
+    };
+
     /*const ids = characters.map(c => c.id);
     console.log('IDs:', ids.join(' - '));*/
 
@@ -80,6 +117,9 @@ export function useMainScreen() {
         loading,
         initialLoading,
         loadMore,
+        reset,
         error,
+        filters,
+        setFilter,
     };
 }

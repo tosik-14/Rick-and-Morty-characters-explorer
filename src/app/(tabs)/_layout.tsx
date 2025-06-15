@@ -52,8 +52,8 @@ export default function TabsLayout () {
                     },
                     headerTintColor: tint,
                     headerRight: () => (
-                        <TouchableOpacity onPress={() => alert("Кнопка!")}>
-                            <Text style={{ marginRight: 10, color: 'blue' }}>Кнопка</Text>
+                        <TouchableOpacity onPress={() => alert("Filter")}>
+                            <Text style={{ marginRight: 10, color: tint }}>Filter</Text>
                         </TouchableOpacity>
                     ),
                     tabBarIcon: () =>(

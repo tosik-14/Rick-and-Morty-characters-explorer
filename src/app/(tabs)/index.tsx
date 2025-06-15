@@ -1,5 +1,7 @@
 import MainScreen from '../../pages/MainScreen/MainScreen';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Index() {
-  return <MainScreen />;
+  const navigation = useNavigation();
+  return <MainScreen navigation={navigation} />;
 }
