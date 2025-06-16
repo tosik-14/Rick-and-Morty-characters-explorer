@@ -6,20 +6,21 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         gap: 10,
         marginBottom: 12,
+        width: '100%',
+        paddingHorizontal: 9,
     },
     pickerWrapper: {
         flex: 1,
     },
     label: {
-        fontSize: 14,
+        display: 'flex',
+        textAlign: 'center',
         marginBottom: 4,
     },
     pickerContainer: {
-        borderWidth: 1,
-        borderColor: '#3a3a3a',
-        borderRadius: 6,
         overflow: 'hidden',
-        backgroundColor: '#2a2a2a',
+        backgroundColor: '#1e2223',
+        borderRadius: 12,
     },
     picker: {
         height: 160,

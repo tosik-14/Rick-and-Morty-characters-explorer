@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 3,
+        alignItems: 'center',
     },
 
     loadingOverlay: {
@@ -31,16 +32,35 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
         backgroundColor: 'rgba(0,0,0,0.2)', // можно сделать затемнение фона
-        justifyContent: 'center',
+        justifyContent: 'start',
         alignItems: 'center',
+
         zIndex: 10,
     },
     dropdownContainer: {
-        width: '80%',
-        backgroundColor: 'white',
+        width: '100%',
+        borderTopWidth: 1,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        borderBottomLeftRadius: 6,
+        borderBottomRightRadius: 6,
         borderRadius: 8,
-        padding: 16,
+        padding: 4,
         // любые другие стили фильтра
     },
+
+    loader: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        //left: '50%',
+        backgroundColor: 'red',
+        width: '100%',
+        height: 40,
+    },
+
+    flatList: {
+        width: '100%',
+    }
 
 });

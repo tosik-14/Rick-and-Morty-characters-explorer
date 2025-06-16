@@ -7,7 +7,8 @@ import Icon from '../../shared/ui/Icon';
 import CharacterCard from '../../features/characters/components/CharacterCard/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
 import DropDownFilters from '../../features/characters/components/DropDownFilters/DropDownFilters';
-import {globalStyles} from "@/src/shared/styles/globalStyles";
+import {globalStyles} from "../../shared/styles/globalStyles";
+import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 
 export default function MainScreen({ navigation }) {
     const [showFilters, setShowFilters] = useState(false);
@@ -28,6 +29,8 @@ export default function MainScreen({ navigation }) {
 
     const {
         backgroundColor,
+        tintBackground,
+        borderColor,
         tint,
         iconColor,
     } = useThemeColors();
@@ -74,7 +77,7 @@ export default function MainScreen({ navigation }) {
                     onPress={() => setShowFilters(false)} // Закрываем при нажатии вне фильтра
                 >
                     <Pressable
-                        style={styles.dropdownContainer}
+                        style={[styles.dropdownContainer, {backgroundColor: tintBackground, borderTopColor: borderColor}]}
                         onPress={(e) => e.stopPropagation()} // Предотвращаем всплытие нажатия внутри фильтра
                     >
                         <DropDownFilters
@@ -94,18 +97,28 @@ export default function MainScreen({ navigation }) {
                 onEndReached={loadMore}
                 onEndReachedThreshold={0.5}
 
-                ListFooterComponent={loading ? <ActivityIndicator size="small" /> : null}
+                ListFooterComponent={loading ? <CustomLoader  /> : null}
 
                 removeClippedSubviews={true}
                 initialNumToRender={20}
                 maxToRenderPerBatch={20}
                 windowSize={5}
+                contentContainerStyle={{
+                    justifyContent: 'center',
+                }}
+                style={styles.flatList}
             />
+
             {loading && initialLoading && (
                 <View style={styles.loadingOverlay}>
-                    <ActivityIndicator size="large" />
+                    <CustomLoader />
+                    {/*<ActivityIndicator size="large" />*/}
                 </View>
             )}
+            {/*<View style={styles.loader}>
+
+            </View>*/}
+            {/*<CustomLoader />*/}
         </View>
     );
 }

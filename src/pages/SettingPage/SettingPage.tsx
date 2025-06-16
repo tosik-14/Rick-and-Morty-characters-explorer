@@ -6,6 +6,7 @@ import {globalStyles} from "../../shared/styles/globalStyles";
 import Icon from '../../shared/ui/Icon';
 import CharacterCard from '../../features/characters/components/CharacterCard/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
+import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 
 
 export default function CharactersListScreen() {
@@ -21,6 +22,8 @@ export default function CharactersListScreen() {
 
     return (
         <View style={[styles.container, { backgroundColor }]}>
+
+            {/*<CustomLoader  />*/}
             <Text style={[globalStyles.fontR16, styles.theme, { color: textColor }]}>{isDarkTheme ? 'Dark Theme' : 'Light Theme'}</Text>
 
 

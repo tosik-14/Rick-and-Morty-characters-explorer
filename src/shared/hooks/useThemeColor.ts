@@ -25,6 +25,8 @@ export function useThemeColors() {
     return {
       backgroundColor: useThemeColor({}, 'background'),
       upBackgroundColor: useThemeColor({}, 'upBackground'),
+      darkenedUpBackground: useThemeColor({}, 'darkenedUpBackground'),
+      borderColor: useThemeColor({}, 'borderColor'),
       textColor: useThemeColor({}, 'text'),
       metaTextColor: useThemeColor({}, 'metaText'),
       tint: useThemeColor({}, 'tint'),

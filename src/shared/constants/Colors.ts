@@ -13,11 +13,12 @@ export const Colors = {
     background: '#f1f1f1',
     tintBackground: '#ffffff',
     upBackground: '#f8f8f8',
+    darkenedUpBackground: '#e8e8e8',
     borderColor: '#cccccc',
     tintBorderColor: '#cccccc',
     tint: tintColorLight,
     icon: '#2d2d31',
-    tabIconDefault: '#687076',
+
     tabIconSelected: tintColorLight,
 
     unknownStatus: '#939393',
@@ -31,11 +32,12 @@ export const Colors = {
     background: '#151718',
     tintBackground: '#151517',
     upBackground: '#262b2c',
+    darkenedUpBackground: '#1e2223',
     borderColor: '#424242',
     tintBorderColor: '#383737',
     tint: tintColorDark,
     icon: '#e7e8e8',
-    tabIconDefault: '#9BA1A6',
+
     tabIconSelected: tintColorDark,
 
     unknownStatus: '#939393',
