@@ -59,7 +59,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
                 </View>
             </View>
 
-            <View style={styles.separator} />
+            <View style={styles.justLine} />
 
             <Text style={[globalStyles.fontB18, styles.name, { color: textColor }]}>{name}</Text>
         </View>

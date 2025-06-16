@@ -13,7 +13,7 @@ export const Colors = {
     background: '#f1f1f1',
     tintBackground: '#ffffff',
     upBackground: '#f8f8f8',
-    darkenedUpBackground: '#e8e8e8',
+    darkenedUpBackground: '#f1f1f1',
     borderColor: '#cccccc',
     tintBorderColor: '#cccccc',
     tint: tintColorLight,

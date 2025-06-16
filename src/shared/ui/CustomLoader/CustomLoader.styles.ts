@@ -6,10 +6,10 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         /*flex: 1,*/
-        top: 0,
+        top: '50%',
         left: '50%',
         right: 0,
-        transform: [{translateX: -100}],
+        transform: [{translateX: -100}, {translateY: -100}],
         height: 50,
         width: 190,
         backgroundColor: 'rgba(0,0,0,0.0)',/*'rgba(0,0,0,0.0)''#000'*/

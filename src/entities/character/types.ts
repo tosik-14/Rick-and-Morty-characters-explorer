@@ -16,5 +16,5 @@ export interface Character {
     image: string;
     episode: string[];
     url: string;
-    created: string; //iso timestamp
+    created: string;
 }

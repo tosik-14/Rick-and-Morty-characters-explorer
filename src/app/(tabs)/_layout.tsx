@@ -51,11 +51,11 @@ export default function TabsLayout () {
                         backgroundColor: tintBackground,
                     },
                     headerTintColor: tint,
-                    headerRight: () => (
+                    /*headerRight: () => (
                         <TouchableOpacity onPress={() => alert("Filter")}>
                             <Text style={{ marginRight: 10, color: tint }}>Filter</Text>
                         </TouchableOpacity>
-                    ),
+                    ),*/
                     tabBarIcon: () =>(
                         <Icon name="home" size={20} color={iconColor}/>
                     ),

@@ -5,6 +5,10 @@ export const globalStyles = StyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         fontSize: 12,
     },
+    fontB14: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 14,
+    },
     fontB16: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 16,

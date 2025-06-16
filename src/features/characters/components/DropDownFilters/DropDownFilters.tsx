@@ -30,7 +30,7 @@ export default function DropDownFilters({ filters, setFilter, close }: DropDownF
         <View style={styles.filtersContainer}>
             <View style={styles.pickerWrapper}>
                 <Text style={[globalStyles.fontR14, styles.label, {color: textColor}]}>Status</Text>
-                <View style={[styles.pickerContainer, {backgroundColor: darkenedUpBackground}]}>
+                <View style={[styles.pickerContainer, {backgroundColor: tintBackground}]}>
                     <Picker
                         selectedValue={filters.status}
                         onValueChange={val => setFilter('status', val)}
@@ -47,7 +47,7 @@ export default function DropDownFilters({ filters, setFilter, close }: DropDownF
 
             <View style={styles.pickerWrapper}>
                 <Text style={[globalStyles.fontR14, styles.label, {color: textColor}]}>Species</Text>
-                <View style={[styles.pickerContainer, {backgroundColor: darkenedUpBackground}]}>
+                <View style={[styles.pickerContainer, {backgroundColor: tintBackground}]}>
                     <Picker
                         selectedValue={filters.species}
                         onValueChange={val => setFilter('species', val)}

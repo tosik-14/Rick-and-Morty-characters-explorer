@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     },
 
 
-    separator: {  //just line
+    justLine: {
         height: 1,
         backgroundColor: '#ccc',
         marginTop: 4,

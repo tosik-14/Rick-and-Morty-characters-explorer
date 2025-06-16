@@ -35,6 +35,7 @@ const iconMap: Record<string, any> = {
     'home': require('../assets/images/icons/homeIcon.png'),
     'settings': require('../assets/images/icons/settingsIcon.png'),
     'filter': require('../assets/images/icons/filterIcon.png'),
+    'backArrow': require('../assets/images/icons/backArrowIcon.png'),
 };
 
 export default Icon;

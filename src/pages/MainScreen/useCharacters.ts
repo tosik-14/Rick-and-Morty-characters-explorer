@@ -109,8 +109,8 @@ export function useCharacters() {
         setError(null);
     };
 
-    const ids = characters.map(c => c.id);
-    console.log('IDs:', ids.join(' - '));
+    /*const ids = characters.map(c => c.id);
+    console.log('IDs:', ids.join(' - '));*/
 
     return {
         characters,
