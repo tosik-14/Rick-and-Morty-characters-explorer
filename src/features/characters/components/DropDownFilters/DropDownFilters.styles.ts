@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     label: {
         display: 'flex',
         textAlign: 'center',
-        //marginBottom: 4,
     },
     pickerContainer: {
         overflow: 'hidden',

@@ -1,13 +1,13 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
 import { getCharacters } from '../../services/api/getCharacters';
 import { getFilteredCharacters } from '../../services/api/getFilteredCharacters';
 import { Character } from '../../entities/character';
+import { loadOfflineCharacters } from '../../services/offlineCharacters/loadOfflineCharacters';
 
 export function useCharacters() {
-    //const charactersRef = useRef<any[]>([]);
     const [characters, setCharacters] = useState<Character[]>([]);
     const [page, setPage] = useState(1);
-    //const pageRef = useRef(1);
     const [isNextPage, setIsNextPage] = useState(true);
     const [loading, setLoading] = useState(false);
     const [initialLoading, setInitialLoading] = useState(true);
@@ -50,9 +50,6 @@ export function useCharacters() {
 
             const data = isEmptyFilters ? await getCharacters(pageToLoad) : await getFilteredCharacters(pageToLoad, filteredParams);
 
-            /*const newCharacters = data.results.filter(
-                (char: Character) => !characters.some(c => c.id === char.id)
-            );*/
             if(page === 1) {
                 setCharacters(data.results);
             } else{
@@ -63,41 +60,40 @@ export function useCharacters() {
             setIsNextPage(!!data.info.next);
             setPage(pageToLoad + 1);
 
-        } catch (err) {
-            setError('Failed to load characters');
+        } catch (err: any) {
+            if (err.message === 'Network request failed') {
+
+                const cached = await loadOfflineCharacters();
+
+                if (cached && cached.length > 0) {
+                    setCharacters(cached);
+                    setIsNextPage(false);
+                } else {
+
+                    Alert.alert(
+                        'No Internet Connection',
+                        'Please check your internet connection and try again.',
+                        [{ text: 'Try again', onPress: () => {
+                                setTimeout(() => {
+                                    loadCharacters(pageToLoad);
+                                }, 4000);
+                            }
+                        }]
+                    );
+
+                }
+            } else {
+                setError('Failed to load characters');
+            }
         } finally {
             setLoading(false);
             setInitialLoading(false);
         }
     };
 
-    /*function findDuplicates(arr) {
-        const seen = new Set();
-        const duplicates = new Set();
-        arr.forEach(item => {
-
-            if (seen.has(item.id)) {
-                duplicates.add(item.id);
-            } else {
-                seen.add(item.id);
-            }
-        });
-        return Array.from(duplicates);
-
-    }
-    const duplicates = findDuplicates(characters);
-    if (duplicates.length > 0) {
-        console.log('Duplicates:', duplicates);
-    }*/
-
-
-
-
     const loadMore = () => { //load next page
         if(!loading && isNextPage){
-            //loadCharacters(pageRef.current + 1);
             loadCharacters(page );
-            //setPage((prev) => prev + 1);
 
         }
     };
@@ -109,15 +105,11 @@ export function useCharacters() {
         setError(null);
     };
 
-    /*const ids = characters.map(c => c.id);
-    console.log('IDs:', ids.join(' - '));*/
-
     return {
         characters,
         loading,
         initialLoading,
         loadMore,
-        reset,
         error,
         filters,
         setFilter,

@@ -11,6 +11,7 @@ interface CharacterCardProps {
 }
 
 export default function CharacterCard({ character }: CharacterCardProps) {
+
     const {
         name,
         image,

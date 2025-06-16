@@ -1,5 +1,5 @@
 import { Picker } from '@react-native-picker/picker';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import { styles } from './DropDownFilters.styles'
 import { useThemeColors } from '../../../../shared/hooks/useThemeColor';
 import {globalStyles} from "../../../../shared/styles/globalStyles";
@@ -13,16 +13,11 @@ type DropDownFiltersProps = {
     close: () => void;
 };
 
-export default function DropDownFilters({ filters, setFilter, close }: DropDownFiltersProps) {
+export default function DropDownFilters({ filters, setFilter }: DropDownFiltersProps) {
 
     const {
-        backgroundColor,
-        upBackgroundColor,
-        darkenedUpBackground,
         textColor,
         tintBackground,
-        borderColor,
-        tint,
         iconColor,
     } = useThemeColors();
 

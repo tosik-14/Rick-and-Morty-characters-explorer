@@ -12,9 +12,8 @@ export const styles = StyleSheet.create({
         transform: [{translateX: -100}, {translateY: -100}],
         height: 50,
         width: 190,
-        backgroundColor: 'rgba(0,0,0,0.0)',/*'rgba(0,0,0,0.0)''#000'*/
+        backgroundColor: 'rgba(0,0,0,0.0)',
         zIndex: 10,
-        //top: 0,
     },
     baseText: {
         fontSize: 30,
@@ -25,9 +24,6 @@ export const styles = StyleSheet.create({
         height: 30,
         textAlign: 'center',
         lineHeight: 30,
-        //justifyContent: 'center',
-        //backgroundColor: 'red',
-        /*flex: 1,*/
         color: '#02B0C9',
         position: 'absolute',
         top: 0,
@@ -41,9 +37,6 @@ export const styles = StyleSheet.create({
         top: '50%',
         marginTop: -15,
         left: 0,
-        //right: 0,
         width: '100%',
-        /*alignItems: 'center',
-        justifyContent: 'center',*/
     },
 });

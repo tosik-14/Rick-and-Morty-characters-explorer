@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     overlay: {
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.2)', // можно сделать затемнение фона
+        backgroundColor: 'rgba(0,0,0,0.2)',
         justifyContent: 'start',
         alignItems: 'center',
 
@@ -46,14 +46,12 @@ export const styles = StyleSheet.create({
         borderBottomRightRadius: 6,
         borderRadius: 8,
         padding: 4,
-        // любые другие стили фильтра
     },
 
     loader: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        //left: '50%',
         backgroundColor: 'red',
         width: '100%',
         height: 40,

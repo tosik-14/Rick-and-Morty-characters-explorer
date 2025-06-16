@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     card: {
-        /*height: 180,*/
-        //width: '100%',
         flexDirection: 'column',
         marginVertical: 6,
         marginHorizontal: 12,
@@ -44,14 +42,10 @@ export const styles = StyleSheet.create({
 
     info: {
         flex: 1,
-        //justifyContent: 'center',
-        //alignItems: 'end',
     },
 
     metaBlock: {
         marginTop: 0,
-        //alignItems: 'flex-end',
-        //justifyContent: 'end',
     },
 
     metaTitle: {

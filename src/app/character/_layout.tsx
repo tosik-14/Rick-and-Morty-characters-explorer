@@ -5,7 +5,6 @@ export default function CharacterLayout() {
     const {
         tint,
         tintBackground,
-        tintBorderColor,
     } = useThemeColors();
 
     return (

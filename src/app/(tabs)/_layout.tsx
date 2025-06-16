@@ -1,6 +1,5 @@
 import { Tabs } from "expo-router"
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import { Text, TouchableOpacity } from 'react-native';
 import Icon from '../../shared/ui/Icon';
 
 export default function TabsLayout () {
@@ -51,11 +50,6 @@ export default function TabsLayout () {
                         backgroundColor: tintBackground,
                     },
                     headerTintColor: tint,
-                    /*headerRight: () => (
-                        <TouchableOpacity onPress={() => alert("Filter")}>
-                            <Text style={{ marginRight: 10, color: tint }}>Filter</Text>
-                        </TouchableOpacity>
-                    ),*/
                     tabBarIcon: () =>(
                         <Icon name="home" size={20} color={iconColor}/>
                     ),

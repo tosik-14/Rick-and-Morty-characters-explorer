@@ -1,12 +1,10 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
 import { styles } from './CharacterPage.styles';
 import {globalStyles} from "../../shared/styles/globalStyles";
 import useCharacterPage from './useCharacterPage';
 import {LocationBlock} from './ui/LocationBlock';
 import Icon from '../../shared/ui/Icon';
-import {Character} from "../../entities/character/types";
 import React, {useLayoutEffect} from "react";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 
@@ -124,7 +122,7 @@ export default function CharacterPage({ characterId, navigation } : CharacterIdP
 
             <View style={styles.justLine} />
 
-            {/* Episodes block */}
+
 
                 <Text style={[globalStyles.fontB18, styles.label, { color: textColor }]}>Episodes:</Text>
                 {episodeDetails.length > 0 ? (

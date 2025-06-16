@@ -1,10 +1,7 @@
-import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { View, Text } from 'react-native';
 import { useThemeColors } from '../../../shared/hooks/useThemeColor';
 import { styles } from '../CharacterPage.styles';
 import {globalStyles} from "../../../shared/styles/globalStyles";
-import useCharacterPage from '../useCharacterPage';
-import Icon from '../../../shared/ui/Icon';
 
 
 

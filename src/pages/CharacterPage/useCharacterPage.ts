@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { Alert } from 'react-native';
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Character } from '../../entities/character/types';
@@ -54,12 +54,10 @@ export default function useCharacterPage({ characterId }: Props) {
             }
             if (data.location?.url) {
                 const locId = extractId(data.location.url);
-                // Чтобы не дублировать id, проверим
                 if (locId && !locationIds.includes(locId)) {
                     locationIds.push(locId);
                 }
             }
-
 
             const locationsData = await getMultipleLocations(`${locationIds.join(',')}`);
 
@@ -104,13 +102,25 @@ export default function useCharacterPage({ characterId }: Props) {
                 setEpisodeDetails([]);
             }
 
-        } catch (err) {
-            setError(`Failed to load character: ${err}`);
+        } catch (err: any) {
+            if (err.message === 'Network request failed') {
+                Alert.alert(
+                    'No Internet Connection',
+                    'Please check your internet connection and try again.',
+                    [{ text: 'Try again', onPress: () => {
+                            setTimeout(() => {
+                                loadSingleCharacter(characterToLoad);
+                            }, 4000);
+                        }
+                    }]
+                );
+            } else {
+                setError('Failed to load characters');
+            }
         } finally {
             setLoading(false);
         }
     }
-
 
     return {
         character,

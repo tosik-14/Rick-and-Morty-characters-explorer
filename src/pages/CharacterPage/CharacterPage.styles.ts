@@ -4,15 +4,12 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        //justifyContent: 'center',
     },
     avatar: {
         width: '100%',
         maxWidth: 360,
         height: 360,
         borderRadius: 12,
-        //borderBottomRightRadius: 12,
-        //borderBottomLeftRadius: 12,
         marginBottom: 8,
 
     },
@@ -36,7 +33,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 30,
         flex: 1,
-        //alignItems: 'center',
     },
 
     mitaTitlesJustify: {
@@ -48,7 +44,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
-
     label: {
 
         marginBottom: 4,
@@ -70,7 +65,6 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 6,
         shadowOffset: { width: 0, height: 2 },
-        //padding: 12
     },
 
     locationHeader: {
@@ -80,19 +74,15 @@ export const styles = StyleSheet.create({
         padding: 12,
         paddingBottom: 8,
     },
-
     rowWrapper: {
         width: '100%',
         flex: 1,
         flexDirection: 'row',
-        //gap: 20,
     },
-
     locationInfo:{
         padding: 12,
         //paddingTop: 0,
     },
-
     subBlock: {
         flex: 1,
         justifyContent: 'center',

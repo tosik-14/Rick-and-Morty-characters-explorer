@@ -1,5 +1,5 @@
 import React, {useState, useLayoutEffect, useCallback} from 'react';
-import { Pressable, View, Text, FlatList, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
+import { Pressable, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useCharacters } from './useCharacters';
 import { styles } from './MainScreen.styles';
@@ -12,20 +12,17 @@ import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 
 export default function MainScreen({ navigation }) {
     const [showFilters, setShowFilters] = useState(false);
+    const router = useRouter();
 
     const {
         characters,
         loading,
         initialLoading,
         loadMore,
-        reset,
         error,
         filters,
         setFilter
     } = useCharacters();
-
-    const router = useRouter();
-
 
     const {
         backgroundColor,
@@ -74,11 +71,11 @@ export default function MainScreen({ navigation }) {
             {showFilters && (
                 <Pressable
                     style={styles.overlay}
-                    onPress={() => setShowFilters(false)} // Закрываем при нажатии вне фильтра
+                    onPress={() => setShowFilters(false)}
                 >
                     <Pressable
                         style={[styles.dropdownContainer, {backgroundColor: tintBackground, borderTopColor: borderColor}]}
-                        onPress={(e) => e.stopPropagation()} // Предотвращаем всплытие нажатия внутри фильтра
+                        onPress={(e) => e.stopPropagation()}
                     >
                         <DropDownFilters
                             filters={filters}
@@ -112,13 +109,9 @@ export default function MainScreen({ navigation }) {
             {loading && initialLoading && (
                 <View style={styles.loadingOverlay}>
                     <CustomLoader />
-                    {/*<ActivityIndicator size="large" />*/}
+
                 </View>
             )}
-            {/*<View style={styles.loader}>
-
-            </View>*/}
-            {/*<CustomLoader />*/}
         </View>
     );
 }
