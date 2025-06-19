@@ -1,7 +1,5 @@
-import { API_URL } from '@env';
-
 export async function getMultipleEpisodes(episodeIds: string) {
-    const response = await fetch(`${API_URL}/episode/${episodeIds}`);
+    const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/episode/${episodeIds}`);
     if (!response.ok) {
         throw new Error(`Error while loading episodes: ${response.status}`);
     }
