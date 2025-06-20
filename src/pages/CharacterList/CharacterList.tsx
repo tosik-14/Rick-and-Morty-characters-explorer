@@ -4,9 +4,9 @@ import { useRouter } from 'expo-router';
 import { useCharacters } from './useCharacters';
 import { styles } from './MainScreen.styles';
 import Icon from '../../shared/ui/Icon';
-import CharacterCard from '../../features/characters/components/CharacterCard/CharacterCard'
+import CharacterCard from '../../features/character/ui/CharacterCard/ui/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import DropDownFilters from '../../features/characters/components/DropDownFilters/DropDownFilters';
+import DropDownFilters from '../../features/character/DropDownFilters/DropDownFilters';
 import {globalStyles} from "../../shared/styles/globalStyles";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 

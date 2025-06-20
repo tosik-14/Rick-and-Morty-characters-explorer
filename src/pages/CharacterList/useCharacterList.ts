@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import { getCharacters } from '../../services/api/getCharacters';
-import { getFilteredCharacters } from '../../services/api/getFilteredCharacters';
+import { getCharacters } from '../../features/character/api/getCharacters';
+import { getFilteredCharacters } from '../../features/character/api/getFilteredCharacters';
 import { Character } from '../../entities/character';
 import { loadOfflineCharacters } from '../../services/offlineCharacters/loadOfflineCharacters';
 
@@ -83,7 +83,7 @@ export function useCharacters() {
 
                 }
             } else {
-                setError('Failed to load characters');
+                setError('Failed to load character');
             }
         } finally {
             setLoading(false);

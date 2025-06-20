@@ -4,9 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { Character } from '../../entities/character/types';
 import { Location } from '../../entities/location/types';
 import { Episode } from '../../entities/episode/types';
-import { getSingleCharacter } from '../../services/api/getSingleCharacter';
-import { getMultipleLocations } from '../../services/api/getMultipleLocations';
-import { getMultipleEpisodes } from '../../services/api/getMultipleEpisodes';
+import { getSingleCharacter } from '../../features/character/api/getSingleCharacter';
+import { getMultipleLocations } from '../../features/location/api/getMultipleLocations';
+import { getMultipleEpisodes } from '../../features/episode/api/getMultipleEpisodes';
 
 interface Props {
     characterId: string;
@@ -115,7 +115,7 @@ export default function useCharacterPage({ characterId }: Props) {
                     }]
                 );
             } else {
-                setError('Failed to load characters');
+                setError('Failed to load character');
             }
         } finally {
             setLoading(false);

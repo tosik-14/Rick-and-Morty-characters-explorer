@@ -3,7 +3,7 @@ import { useThemeColors } from '../../shared/hooks/useThemeColor';
 import { styles } from './CharacterPage.styles';
 import {globalStyles} from "../../shared/styles/globalStyles";
 import useCharacterPage from './useCharacterPage';
-import {LocationBlock} from './ui/LocationBlock';
+import {LocationBlock} from '../../features/location/ui/LocationBlock';
 import Icon from '../../shared/ui/Icon';
 import React, {useLayoutEffect} from "react";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
