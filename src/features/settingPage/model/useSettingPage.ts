@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import { useAppTheme } from '@/src/shared/theme/theme-context';
-import {saveTheme} from '../../services/storage/saveTheme';
+import {saveTheme} from '../../../services/storage/saveTheme';
 
 export function useSettingPage() {
     const { theme, toggleTheme } = useAppTheme();

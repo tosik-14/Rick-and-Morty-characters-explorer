@@ -1,9 +1,10 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import { styles } from './CharacterPage.styles';
+import { styles } from './CharacterDetailView.styles';
 import {globalStyles} from "../../shared/styles/globalStyles";
-import useCharacterPage from './useCharacterPage';
-import {LocationBlock} from '../../features/location/ui/LocationBlock';
+import useCharacterDetailView from '../../features/character/characterDetailView/model/useCharacterDetailView';
+import {LocationCard} from '../../features/location/ui/LocationCard';
+import {EpisodeCard} from "@/src/features/episode/ui/EpisodeCard";
 import Icon from '../../shared/ui/Icon';
 import React, {useLayoutEffect} from "react";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
@@ -13,20 +14,17 @@ interface CharacterIdProps {
     navigation: any;
 }
 
-export default function CharacterPage({ characterId, navigation } : CharacterIdProps) {
+export default function CharacterDetailView({ characterId, navigation } : CharacterIdProps) {
     const {
         character,
-        originLocation,
-        lastSeenLocation,
-        episodeDetails,
+        locationUrls,
+        episodeUrls,
         loading,
         error,
-    } = useCharacterPage({characterId})
+    } = useCharacterDetailView({characterId})
 
     const {
         backgroundColor,
-        upBackgroundColor,
-        darkenedUpBackground,
         textColor,
         metaTextColor,
         unknownStatus,
@@ -81,73 +79,40 @@ export default function CharacterPage({ characterId, navigation } : CharacterIdP
 
             <View style={styles.infoBlock}>
 
-                <View style={styles.mitaTitlesJustify}>
+                <View style={styles.metaTitlesJustify}>
                     <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Status:</Text>
                     <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Gender:</Text>
                     <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Species:</Text>
                 </View>
 
-                <View>
+                <View style={styles.characterInfo}>
                     <View style={styles.statusRow}>
-                        <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.status}{'  '}
-                            <Icon name="status" size={10} color={
-                                character.status === 'Alive' ? aliveStatus
-                                    : character.status === 'Dead' ? deathStatus : unknownStatus
-                                }
-                            />
-                        </Text>
+                        <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.status}{'  '}</Text>
+                        <Icon name="status" size={10} color={
+                            character.status === 'Alive' ? aliveStatus
+                                : character.status === 'Dead' ? deathStatus : unknownStatus
+                        }
+                              style={styles.statusCircle}
+                        />
                     </View>
 
                     <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.gender}</Text>
                     <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.species}</Text>
                 </View>
 
-
             </View>
 
+
             <View style={styles.justLine} />
 
-
-            <LocationBlock
-                title="Origin:"
-                name={character.origin?.name}
-                locationData={originLocation}
-            />
-
-            <LocationBlock
-                title="Last seen at:"
-                name={character.location?.name}
-                locationData={lastSeenLocation}
+            <LocationCard
+                locations={locationUrls}
             />
 
             <View style={styles.justLine} />
 
-
-
-                <Text style={[globalStyles.fontB18, styles.label, { color: textColor }]}>Episodes:</Text>
-                {episodeDetails.length > 0 ? (
-                    episodeDetails.map((ep, index) => (
-                        <View key={ep.id} style={[styles.card, { backgroundColor: upBackgroundColor }]}>
-
-                            <View style={[styles.rowWrapper, {alignItems: 'center'}]}>
-
-                                <View style={[styles.episodeIndexWrapper, {backgroundColor: darkenedUpBackground }]}>
-                                    <Text style={[globalStyles.fontB20, styles.episodeIndex, { color: metaTextColor }]}>{index + 1}</Text>
-                                </View>
-
-                                <View style={[styles.episodeInfo]}>
-                                    <Text style={[globalStyles.fontB14, { color: textColor }]}>{ep.name}</Text>
-
-                                    <Text style={[globalStyles.fontR14, { color: textColor }]}>{ep.episode} | {ep.air_date}</Text>
-                                </View>
-                            </View>
-
-
-                        </View>
-                    ))
-                ) : (
-                    <Text style={[styles.value, { color: textColor }]}>No episodes found</Text>
-                )}
+            <Text style={[globalStyles.fontB18, styles.label, { color: textColor }]}>Episodes:</Text>
+            <EpisodeCard episodeUrls={episodeUrls} />
 
         </ScrollView>
     );

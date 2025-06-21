@@ -1,8 +1,8 @@
 import { Picker } from '@react-native-picker/picker';
 import { View, Text } from 'react-native';
 import { styles } from './DropDownFilters.styles'
-import { useThemeColors } from '../../../../shared/hooks/useThemeColor';
-import {globalStyles} from "../../../../shared/styles/globalStyles";
+import { useThemeColors } from '../../../shared/hooks/useThemeColor';
+import {globalStyles} from "../../../shared/styles/globalStyles";
 
 type DropDownFiltersProps = {
     filters: {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useSettingPage } from './useSettingPage';
+import { useSettingPage } from '../../features/settingPage/model/useSettingPage';
 import { styles } from './SettingPage.styles';
 import {globalStyles} from "../../shared/styles/globalStyles";
 import Icon from '../../shared/ui/Icon';
-import CharacterCard from '../../features/characters/components/CharacterCard/CharacterCard'
+import CharacterCard from '../../features/character/ui/CharacterCard/ui/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 

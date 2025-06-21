@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import { getCharacters } from '../../features/character/api/getCharacters';
-import { getFilteredCharacters } from '../../features/character/api/getFilteredCharacters';
-import { Character } from '../../entities/character';
-import { loadOfflineCharacters } from '../../services/offlineCharacters/loadOfflineCharacters';
+import { getCharacters } from '../../api/getCharacters';
+import { getFilteredCharacters } from '../../api/getFilteredCharacters';
+import { Character } from '../../../../entities/character';
+import { loadOfflineCharacters } from '../../../../services/offlineCharacters/loadOfflineCharacters';
 
-export function useCharacters() {
+export function useCharacterList() {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [page, setPage] = useState(1);
     const [isNextPage, setIsNextPage] = useState(true);

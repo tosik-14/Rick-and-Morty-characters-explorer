@@ -1,10 +1,10 @@
 import { View, Text, Image } from 'react-native';
 import { styles } from './CharacterCard.styles';
-import {globalStyles} from "../../../../shared/styles/globalStyles";
-import useCharacterCard from "./useCharacterCard";
-import {Character} from "../../../../entities/character/types";
-import { useThemeColors } from '../../../../shared/hooks/useThemeColor';
-import Icon from '../../../../shared/ui/Icon';
+import {globalStyles} from "../../../../../shared/styles/globalStyles";
+import useCharacterCard from "../model/useCharacterCard";
+import {Character} from "../../../../../entities/character/types";
+import { useThemeColors } from '../../../../../shared/hooks/useThemeColor';
+import Icon from '../../../../../shared/ui/Icon';
 
 interface CharacterCardProps {
     character: Character;

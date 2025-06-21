@@ -1,4 +1,4 @@
-import {Character} from "../../../../entities/character/types";
+import {Character} from "../../../../../entities/character/types";
 
 interface CharacterCardProps {
     character: Character;

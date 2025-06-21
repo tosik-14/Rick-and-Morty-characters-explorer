@@ -1,8 +1,8 @@
 import React, {useState, useLayoutEffect, useCallback} from 'react';
 import { Pressable, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useCharacters } from './useCharacters';
-import { styles } from './MainScreen.styles';
+import { useCharacterList } from '../../features/character/characterList/model/useCharacterList';
+import { styles } from './CharacterList.styles';
 import Icon from '../../shared/ui/Icon';
 import CharacterCard from '../../features/character/ui/CharacterCard/ui/CharacterCard'
 import { useThemeColors } from '../../shared/hooks/useThemeColor';
@@ -10,7 +10,7 @@ import DropDownFilters from '../../features/character/DropDownFilters/DropDownFi
 import {globalStyles} from "../../shared/styles/globalStyles";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
 
-export default function MainScreen({ navigation }) {
+export default function CharacterList({ navigation }) {
     const [showFilters, setShowFilters] = useState(false);
     const router = useRouter();
 
@@ -22,7 +22,7 @@ export default function MainScreen({ navigation }) {
         error,
         filters,
         setFilter
-    } = useCharacters();
+    } = useCharacterList();
 
     const {
         backgroundColor,
