@@ -5,6 +5,7 @@ import useCharacterCard from "../model/useCharacterCard";
 import {Character} from "../../../../../entities/character/types";
 import { useThemeColors } from '../../../../../shared/hooks/useThemeColor';
 import Icon from '../../../../../shared/ui/Icon';
+import {characterStatusEnum} from "@/src/entities/character/characterStatusEnum";
 
 interface CharacterCardProps {
     character: Character;
@@ -37,8 +38,8 @@ export default function CharacterCard({ character }: CharacterCardProps) {
                     <Image source={{ uri: image }} style={styles.avatar} />
                     <View style={styles.statusRow}>
                         <Icon style={styles.statusCircle} name="status" size={10} color={
-                            character.status === 'Alive' ? aliveStatus
-                                : character.status === 'Dead' ? deathStatus : unknownStatus
+                            character.status === characterStatusEnum.Alive ? aliveStatus
+                                : character.status === characterStatusEnum.Dead ? deathStatus : unknownStatus
                         } />
 
                             <Text style={[globalStyles.fontR14, { color: textColor }]}>{status}</Text>
