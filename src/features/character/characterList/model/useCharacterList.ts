@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
-import { getCharacters } from '../../api/getCharacters';
-import { getFilteredCharacters } from '../../api/getFilteredCharacters';
-import { Character } from '../../../../entities/character';
-import { loadOfflineCharacters } from '../../../../services/offlineCharacters/loadOfflineCharacters';
+import {useEffect, useState} from 'react';
+import {getCharacters} from '../../api/getCharacters';
+import {getFilteredCharacters} from '../../api/getFilteredCharacters';
+import {Character} from '../../../../entities/character';
+import {loadOfflineCharacters} from '../../../../services/offlineCharacters/loadOfflineCharacters';
+import {useInternet} from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
+import {showSimpleAlert} from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
+import {checkInternetConnection} from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
+import {AlertMessagesEnum} from "@/src/shared/ui/showSimpleAlert/constants/alertMessagesEnum";
 
 export function useCharacterList() {
     const [characters, setCharacters] = useState<Character[]>([]);
@@ -12,6 +15,8 @@ export function useCharacterList() {
     const [loading, setLoading] = useState(false);
     const [initialLoading, setInitialLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const { isConnected } = useInternet();
 
     const [filters, setFilters] = useState<{ status: string, species: string }>({
         status: '',
@@ -26,7 +31,8 @@ export function useCharacterList() {
     };
 
 
-    useEffect(() => { //first render
+    useEffect(() => {
+        //if (isConnected === undefined) return;
         reset();
         loadCharacters(1);
 
@@ -36,7 +42,19 @@ export function useCharacterList() {
         if (loading || !isNextPage) return;
 
         setLoading(true);
+
         try {
+            const isInternet = await checkInternetConnection();
+            if (!isInternet) {
+                const cached = await loadOfflineCharacters();
+                if (cached && cached.length > 0) {
+                    setCharacters(cached);
+                    setIsNextPage(false);
+                } else {
+                    setError('No internet connection');
+                }
+                return;
+            }
 
             const filteredParams = Object.entries(filters)
                 .reduce((acc, [key, value]) => {
@@ -61,38 +79,19 @@ export function useCharacterList() {
             setPage(pageToLoad + 1);
 
         } catch (err: any) {
-            if (err.message === 'Network request failed') {
+            setError('Failed to load character');
 
-                const cached = await loadOfflineCharacters();
-
-                if (cached && cached.length > 0) {
-                    setCharacters(cached);
-                    setIsNextPage(false);
-                } else {
-
-                    Alert.alert(
-                        'No Internet Connection',
-                        'Please check your internet connection and try again.',
-                        [{ text: 'Try again', onPress: () => {
-                                setTimeout(() => {
-                                    loadCharacters(pageToLoad);
-                                }, 4000);
-                            }
-                        }]
-                    );
-
-                }
-            } else {
-                setError('Failed to load character');
-            }
         } finally {
             setLoading(false);
             setInitialLoading(false);
         }
     };
 
-    const loadMore = () => { //load next page
-        if(!loading && isNextPage){
+    const loadMore = async () => { //load next page
+        const isInternet = await checkInternetConnection();
+        if (!isInternet) {
+            showSimpleAlert(AlertMessagesEnum.NoInternet);
+        } else if(!loading && isNextPage){
             loadCharacters(page );
 
         }
@@ -113,5 +112,6 @@ export function useCharacterList() {
         error,
         filters,
         setFilter,
+        isConnected,
     };
 }
