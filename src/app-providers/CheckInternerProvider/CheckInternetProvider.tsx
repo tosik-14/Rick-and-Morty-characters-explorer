@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
-import { getNetworkStateAsync } from 'expo-network';
+//import { getNetworkStateAsync } from 'expo-network';
+import {checkInternetConnection} from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
 
 type InternetContextType = {
     isConnected: boolean;
@@ -11,10 +12,11 @@ export const CheckInternetProvider: React.FC<{children: React.ReactNode }> = ({c
     const [isConnected, setIsConnected] = useState(true);
 
     const checkConnection = async () => {
-        const status = await getNetworkStateAsync();
-        setIsConnected(status.isConnected && status.isInternetReachable !== false);
+        const result = await checkInternetConnection();
+        setIsConnected(result);
+        /*const status = await getNetworkStateAsync();
+        setIsConnected(status.isConnected && status.isInternetReachable !== false);*/
     }
-    console.log("INET PROVIDER", isConnected);
     useEffect(() => {
         checkConnection();
         const timeout = setInterval(() => {
