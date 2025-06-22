@@ -2,7 +2,8 @@ import { Stack } from 'expo-router';
 import { useCachedResources } from '../shared/hooks/resources/useCachedResources';
 import { View, ActivityIndicator } from 'react-native';
 import { useThemeColors } from '../shared/hooks/useThemeColor';
-import { ThemeProvider } from '../shared/theme/theme-context';
+import { ThemeProvider } from '../app-providers/ThemeProvider/theme-context';
+import {CheckInternetProvider} from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
 
 export default function RootLayout() {
     const isReady = useCachedResources();
@@ -11,26 +12,31 @@ export default function RootLayout() {
 
     if (!isReady) {
         return (
-            <ThemeProvider>
-                <View style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: tintBackground,
-                }}>
-                    <ActivityIndicator size="large" />
-                </View>
-            </ThemeProvider>
+            <CheckInternetProvider>
+                <ThemeProvider>
+                    <View style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: tintBackground,
+                    }}>
+                        <ActivityIndicator size="large" />
+                    </View>
+                </ThemeProvider>
+            </CheckInternetProvider>
+
         );
     }
 
     return (
-        <ThemeProvider>
-            <Stack
-                screenOptions={{
-                    headerShown: false,
-                }}
-            />
-        </ThemeProvider>
+        <CheckInternetProvider>
+            <ThemeProvider>
+                <Stack
+                    screenOptions={{
+                        headerShown: false,
+                    }}
+                />
+            </ThemeProvider>
+        </CheckInternetProvider>
     );
 }
