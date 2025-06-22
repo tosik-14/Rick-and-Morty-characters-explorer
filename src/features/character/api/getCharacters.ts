@@ -1,5 +1,7 @@
 export async function getCharacters(page: number = 1) {
-    const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/character?page=${page}`);
+    const response = await fetch(
+        `${process.env.EXPO_PUBLIC_API_URL}/character?page=${page}`,
+    );
 
     if (!response.ok) {
         throw new Error(`Error while loading characters: ${response.status}`);

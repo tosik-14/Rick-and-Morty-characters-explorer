@@ -1,12 +1,12 @@
-import {useEffect, useState} from 'react';
-import {getCharacters} from '@/src/features/character/api/getCharacters';
-import {getFilteredCharacters} from '@/src/features/character/api/getFilteredCharacters';
-import {Character} from '@/src/entities/character';
-import {loadOfflineCharacters} from '@/src/services/offlineCharacters/loadOfflineCharacters';
-import {useInternet} from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
-import {showSimpleAlert} from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
-import {checkInternetConnection} from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
-import {AlertMessagesEnum} from "@/src/shared/ui/showSimpleAlert/constants/alertMessagesEnum";
+import { useEffect, useState } from "react";
+import { getCharacters } from "@/src/features/character/api/getCharacters";
+import { getFilteredCharacters } from "@/src/features/character/api/getFilteredCharacters";
+import { Character } from "@/src/entities/character";
+import { loadOfflineCharacters } from "@/src/services/offlineCharacters/loadOfflineCharacters";
+import { useInternet } from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
+import { showSimpleAlert } from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
+import { checkInternetConnection } from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
+import { AlertMessagesEnum } from "@/src/shared/ui/showSimpleAlert/constants/alertMessagesEnum";
 
 export function useCharacterList() {
     const [characters, setCharacters] = useState<Character[]>([]);
@@ -18,24 +18,24 @@ export function useCharacterList() {
 
     const { isConnected } = useInternet();
 
-    const [filters, setFilters] = useState<{ status: string, species: string }>({
-        status: '',
-        species: ''
-    });
+    const [filters, setFilters] = useState<{ status: string; species: string }>(
+        {
+            status: "",
+            species: "",
+        },
+    );
 
-    const setFilter = (key: 'status' | 'species', value: string) => {
-        setFilters(prev => ({
+    const setFilter = (key: "status" | "species", value: string) => {
+        setFilters((prev) => ({
             ...prev,
-            [key]: value
+            [key]: value,
         }));
     };
-
 
     useEffect(() => {
         //if (isConnected === undefined) return;
         reset();
         loadCharacters(1);
-
     }, [filters.status, filters.species]);
 
     const loadCharacters = async (pageToLoad: number) => {
@@ -51,53 +51,54 @@ export function useCharacterList() {
                     setCharacters(cached);
                     setIsNextPage(false);
                 } else {
-                    setError('No internet connection');
+                    setError("No internet connection");
                 }
                 return;
             }
 
-            const filteredParams = Object.entries(filters)
-                .reduce((acc, [key, value]) => {
-                    if (value.trim() !== '') {
+            const filteredParams = Object.entries(filters).reduce(
+                (acc, [key, value]) => {
+                    if (value.trim() !== "") {
                         acc[key] = value;
                     }
                     return acc;
-                }, {} as Record<string, string>);
+                },
+                {} as Record<string, string>,
+            );
 
             const isEmptyFilters = Object.keys(filteredParams).length === 0;
 
-            const data = isEmptyFilters ? await getCharacters(pageToLoad) : await getFilteredCharacters(pageToLoad, filteredParams);
+            const data = isEmptyFilters
+                ? await getCharacters(pageToLoad)
+                : await getFilteredCharacters(pageToLoad, filteredParams);
 
-            if(page === 1) {
+            if (page === 1) {
                 setCharacters(data.results);
-            } else{
+            } else {
                 setCharacters((prev) => [...prev, ...data.results]);
             }
 
-
             setIsNextPage(!!data.info.next);
             setPage(pageToLoad + 1);
-
         } catch (err: any) {
-            setError('Failed to load character');
-
+            setError("Failed to load character");
         } finally {
             setLoading(false);
             setInitialLoading(false);
         }
     };
 
-    const loadMore = async () => { //load next page
+    const loadMore = async () => {
+        //load next page
         const isInternet = await checkInternetConnection();
         if (!isInternet) {
             showSimpleAlert(AlertMessagesEnum.NoInternet);
-        } else if(!loading && isNextPage){
-            loadCharacters(page );
-
+        } else if (!loading && isNextPage) {
+            loadCharacters(page);
         }
     };
 
-     const reset = async () => {
+    const reset = async () => {
         setCharacters([]);
         setPage(1);
         setIsNextPage(true);

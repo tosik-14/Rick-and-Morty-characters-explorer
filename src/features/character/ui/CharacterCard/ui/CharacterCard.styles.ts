@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     card: {
-        flexDirection: 'column',
+        flexDirection: "column",
         marginVertical: 6,
         marginHorizontal: 12,
         borderRadius: 12,
         elevation: 3,
-        shadowColor: '#000',
+        shadowColor: "#000",
         shadowOpacity: 0.1,
         shadowRadius: 6,
         shadowOffset: { width: 0, height: 2 },
@@ -23,17 +23,17 @@ export const styles = StyleSheet.create({
     },
 
     statusRow: {
-        flexDirection: 'row',
-        justifyContent: 'start',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
     },
 
     rowWrapper: {
-        flexDirection: 'row',
+        flexDirection: "row",
     },
 
     columnWrapper: {
-        flexDirection: 'column',
+        flexDirection: "column",
     },
 
     statusCircle: {
@@ -52,10 +52,9 @@ export const styles = StyleSheet.create({
         marginTop: 8,
     },
 
-
     justLine: {
         height: 1,
-        backgroundColor: '#ccc',
+        backgroundColor: "#ccc",
         marginTop: 4,
         marginBottom: 4,
         marginHorizontal: 4,
@@ -64,7 +63,7 @@ export const styles = StyleSheet.create({
     },
 
     name: {
-        textAlign: 'center',
+        textAlign: "center",
         marginTop: 6,
     },
 });

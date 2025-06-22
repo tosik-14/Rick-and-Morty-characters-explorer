@@ -1,53 +1,56 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 3,
-        alignItems: 'center',
+        alignItems: "center",
     },
 
     loadingOverlay: {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        justifyContent: "center",
+        alignItems: "center",
         zIndex: 10,
     },
 
     headerFilterButton: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         gap: 5,
         marginRight: 20,
     },
 
     headerNoInetAlert: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         gap: 5,
         //paddingLeft: 10,
     },
 
     overlay: {
-        position: 'absolute',
-        top: 0, left: 0, right: 0, bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        justifyContent: 'start',
-        alignItems: 'center',
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(0,0,0,0.2)",
+        justifyContent: "start",
+        alignItems: "center",
 
         zIndex: 10,
     },
     dropdownContainer: {
-        width: '100%',
+        width: "100%",
         borderTopWidth: 1,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
@@ -58,16 +61,15 @@ export const styles = StyleSheet.create({
     },
 
     loader: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'red',
-        width: '100%',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "red",
+        width: "100%",
         height: 40,
     },
 
     flatList: {
-        width: '100%',
-    }
-
+        width: "100%",
+    },
 });

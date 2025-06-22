@@ -1,4 +1,4 @@
 export enum AlertMessagesEnum {
-    NoInternet = 'NoInternet',
-    UnknownError = 'UnknownError',
+    NoInternet = "NoInternet",
+    UnknownError = "UnknownError",
 }

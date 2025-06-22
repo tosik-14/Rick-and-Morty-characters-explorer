@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     avatar: {
-        width: '100%',
+        width: "100%",
         maxWidth: 360,
         height: 360,
         borderRadius: 12,
@@ -15,8 +15,8 @@ export const styles = StyleSheet.create({
 
     justLine: {
         height: 1,
-        width: '100%',
-        backgroundColor: '#ccc',
+        width: "100%",
+        backgroundColor: "#ccc",
         marginTop: 10,
         marginBottom: 10,
         marginHorizontal: 4,
@@ -25,13 +25,13 @@ export const styles = StyleSheet.create({
     },
 
     infoBlock: {
-        flexDirection: 'row',
+        flexDirection: "row",
         gap: 30,
         flex: 1,
     },
 
     metaTitlesJustify: {
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
     },
 
     label: {
@@ -43,9 +43,9 @@ export const styles = StyleSheet.create({
     },
 
     statusRow: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
     },
 
     statusCircle: {
@@ -54,9 +54,7 @@ export const styles = StyleSheet.create({
     },
 
     characterInfo: {
-        alignSelf: 'stretch',
-        flexDirection: 'column',
+        alignSelf: "stretch",
+        flexDirection: "column",
     },
-
-
 });

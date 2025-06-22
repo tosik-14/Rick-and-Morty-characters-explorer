@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
     },
     theme: {
         fontSize: 24,
@@ -15,11 +15,7 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 200,
         borderRadius: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-
+        justifyContent: "center",
+        alignItems: "center",
     },
-
-
-
 });

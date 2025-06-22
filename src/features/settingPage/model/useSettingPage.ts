@@ -1,6 +1,6 @@
-import {useEffect} from 'react';
-import { useAppTheme } from '@/src/app-providers/ThemeProvider/theme-context';
-import {saveTheme} from '@/src/services/storage/saveTheme';
+import { useEffect } from "react";
+import { useAppTheme } from "@/src/app-providers/ThemeProvider/theme-context";
+import { saveTheme } from "@/src/services/storage/saveTheme";
 
 export function useSettingPage() {
     const { theme, toggleTheme } = useAppTheme();
@@ -8,13 +8,12 @@ export function useSettingPage() {
     useEffect(() => {
         const storeTheme = async () => {
             await saveTheme(theme);
-        }
+        };
         storeTheme();
     }, [theme]);
 
-
     return {
-        isDarkTheme: theme === 'dark',
+        isDarkTheme: theme === "dark",
         toggleTheme,
     };
 }

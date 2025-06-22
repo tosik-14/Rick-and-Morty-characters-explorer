@@ -6,4 +6,4 @@ export interface Location {
     residents: string[];
     url: string;
     created: string;
-};
+}

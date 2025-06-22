@@ -1,5 +1,5 @@
 export enum characterStatusEnum {
-    Alive = 'Alive',
-    Dead = 'Dead',
-    Unknown = 'unknown',
+    Alive = "Alive",
+    Dead = "Dead",
+    Unknown = "unknown",
 }

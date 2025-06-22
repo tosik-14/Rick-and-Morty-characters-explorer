@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import { Animated,  Dimensions } from 'react-native';
+import { useEffect, useRef } from "react";
+import { Animated, Dimensions } from "react-native";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export const useCustomLoader = () => {
     const animation = useRef(new Animated.Value(0)).current;
@@ -12,7 +12,7 @@ export const useCustomLoader = () => {
                 toValue: 1,
                 duration: 600,
                 useNativeDriver: false,
-            })
+            }),
         ).start();
     }, []);
 
@@ -22,6 +22,6 @@ export const useCustomLoader = () => {
     });
 
     return {
-      maskWidth,
+        maskWidth,
     };
 };

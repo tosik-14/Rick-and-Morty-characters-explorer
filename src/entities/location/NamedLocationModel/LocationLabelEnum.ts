@@ -1,4 +1,4 @@
 export enum LocationLabelEnum {
-    Origin = 'origin',
-    LastSeen = 'lastSeen',
+    Origin = "origin",
+    LastSeen = "lastSeen",
 }

@@ -1,18 +1,11 @@
-import {Character} from "@/src/entities/character/types";
+import { Character } from "@/src/entities/character/types";
 
 interface CharacterCardProps {
     character: Character;
 }
 
-export default function useCharacterCard({ character } : CharacterCardProps){
-    const {
-        name,
-        image,
-        status,
-        species,
-        origin,
-        location,
-    } = character;
+export default function useCharacterCard({ character }: CharacterCardProps) {
+    const { name, image, status, species, origin, location } = character;
 
     return {
         name,

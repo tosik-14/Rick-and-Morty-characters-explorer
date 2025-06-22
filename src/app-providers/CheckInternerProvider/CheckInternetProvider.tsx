@@ -1,19 +1,23 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
-import {checkInternetConnection} from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
+import { checkInternetConnection } from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
 
 type InternetContextType = {
     isConnected: boolean;
-}
+};
 
-const InternetContext = createContext<InternetContextType>({isConnected: true});
+const InternetContext = createContext<InternetContextType>({
+    isConnected: true,
+});
 
-export const CheckInternetProvider: React.FC<{children: React.ReactNode }> = ({children}) => {
+export const CheckInternetProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
     const [isConnected, setIsConnected] = useState(true);
 
     const checkConnection = async () => {
         const result = await checkInternetConnection();
         setIsConnected(result);
-    }
+    };
     useEffect(() => {
         checkConnection();
         const timeout = setInterval(() => {
@@ -23,7 +27,7 @@ export const CheckInternetProvider: React.FC<{children: React.ReactNode }> = ({c
     }, []);
 
     return (
-        <InternetContext.Provider value={{isConnected}}>
+        <InternetContext.Provider value={{ isConnected }}>
             {children}
         </InternetContext.Provider>
     );

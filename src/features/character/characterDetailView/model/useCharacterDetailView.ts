@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {Character} from '@/src/entities/character/types';
-import {NamedLocationUrl} from "@/src/entities/location/NamedLocationModel/types";
-import {LocationLabelEnum} from "@/src/entities/location/NamedLocationModel/LocationLabelEnum";
-import {getSingleCharacter} from '@/src/entities/character/api/getSingleCharacter';
+import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { Character } from "@/src/entities/character/types";
+import { NamedLocationUrl } from "@/src/entities/location/NamedLocationModel/types";
+import { LocationLabelEnum } from "@/src/entities/location/NamedLocationModel/LocationLabelEnum";
+import { getSingleCharacter } from "@/src/entities/character/api/getSingleCharacter";
 
 interface Props {
     characterId: number;
@@ -23,15 +23,13 @@ export default function useCharacterDetailView({ characterId }: Props) {
 
     useEffect(() => {
         if (character?.name) {
-            navigation.setOptions(
-                {
-                    title: character.name,
-                });
+            navigation.setOptions({
+                title: character.name,
+            });
         }
     }, [character]);
 
     const loadSingleCharacter = async (characterToLoad: number) => {
-
         if (loading) return;
 
         setLoading(true);
@@ -39,31 +37,35 @@ export default function useCharacterDetailView({ characterId }: Props) {
             const data = await getSingleCharacter(characterToLoad);
             setCharacter(data);
 
+            setLocationUrls((prev) => {
+                const updated = [...prev];
 
-            setLocationUrls(prev => {
-               const updated = [...prev];
+                const push = (url: string, label: LocationLabelEnum) => {
+                    if (
+                        !updated.some(
+                            (item) => item.url === url && item.label === label,
+                        )
+                    )
+                        updated.push({ url, label });
+                };
 
-               const push = (url: string, label: LocationLabelEnum) => {
-                   if(!updated.some(item => item.url === url && item.label === label)) updated.push({url, label});
-               };
+                if (data.origin?.url)
+                    push(data.origin.url, LocationLabelEnum.Origin);
+                if (data.location?.url)
+                    push(data.location.url, LocationLabelEnum.LastSeen);
 
-               if(data.origin?.url) push(data.origin.url, LocationLabelEnum.Origin);
-               if(data.location?.url) push(data.location.url, LocationLabelEnum.LastSeen);
-
-               return updated;
+                return updated;
             });
 
             if (data.episode && data.episode.length > 0) {
                 setEpisodeUrls(data.episode);
             }
-
-
         } catch (err: any) {
-            setError('Failed to load character');
+            setError("Failed to load character");
         } finally {
             setLoading(false);
         }
-    }
+    };
 
     return {
         character,

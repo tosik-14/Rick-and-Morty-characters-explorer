@@ -1,5 +1,5 @@
-import * as Font from 'expo-font';
-import { useEffect, useState } from 'react';
+import * as Font from "expo-font";
+import { useEffect, useState } from "react";
 
 export function useCachedResources() {
     const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -8,10 +8,10 @@ export function useCachedResources() {
         async function loadResourcesAndDataAsync() {
             try {
                 await Font.loadAsync({
-                    'Montserrat-Regular': require('../../assets/fonts/Montserrat-Regular.ttf'),
-                    'Montserrat-Bold': require('../../assets/fonts/Montserrat-Bold.ttf'),
-                    'Montserrat-SemiBold': require('../../assets/fonts/Montserrat-SemiBold.ttf'),
-                    'WubbaLubba': require('../../assets/fonts/WubbaLubbaDubDub.ttf'),
+                    "Montserrat-Regular": require("../../assets/fonts/Montserrat-Regular.ttf"),
+                    "Montserrat-Bold": require("../../assets/fonts/Montserrat-Bold.ttf"),
+                    "Montserrat-SemiBold": require("../../assets/fonts/Montserrat-SemiBold.ttf"),
+                    WubbaLubba: require("../../assets/fonts/WubbaLubbaDubDub.ttf"),
                 });
             } catch (e) {
                 console.warn(e);

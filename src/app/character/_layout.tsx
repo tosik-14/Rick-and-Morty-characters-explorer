@@ -1,11 +1,8 @@
 import { Stack } from "expo-router";
-import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
+import { useThemeColors } from "@/src/shared/hooks/useThemeColor";
 
 export default function CharacterLayout() {
-    const {
-        tint,
-        tintBackground,
-    } = useThemeColors();
+    const { tint, tintBackground } = useThemeColors();
 
     return (
         <Stack
@@ -13,15 +10,14 @@ export default function CharacterLayout() {
                 headerShown: true,
                 headerStyle: {
                     backgroundColor: tintBackground,
-
                 },
                 headerTintColor: tint,
-                headerTitleAlign: 'center',
-                title: '',
+                headerTitleAlign: "center",
+                title: "",
                 headerTitleStyle: {
-                    fontFamily: 'WubbaLubba',
+                    fontFamily: "WubbaLubba",
                     fontSize: 30,
-                    color: '#02B0C9',
+                    color: "#02B0C9",
                 },
             }}
         />

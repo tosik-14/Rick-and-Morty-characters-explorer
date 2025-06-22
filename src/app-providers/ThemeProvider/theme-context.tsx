@@ -1,10 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Appearance } from 'react-native';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { Appearance } from "react-native";
 import { loadTheme } from "@/src/services/storage/loadTheme";
-import {CustomLoader} from "@/src/shared/ui/CustomLoader/CustomLoader";
+import { CustomLoader } from "@/src/shared/ui/CustomLoader/CustomLoader";
 
-
-type ThemeType = 'light' | 'dark';
+type ThemeType = "light" | "dark";
 
 interface ThemeContextProps {
     theme: ThemeType;
@@ -12,12 +11,14 @@ interface ThemeContextProps {
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
-    theme: 'light',
+    theme: "light",
     toggleTheme: () => {},
 });
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const colorScheme = Appearance.getColorScheme() ?? 'light';
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
+    const colorScheme = Appearance.getColorScheme() ?? "light";
     const [theme, setTheme] = useState<ThemeType>(colorScheme);
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -27,17 +28,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 const storedTheme = await loadTheme();
                 setTheme(storedTheme);
             } catch (err) {
-                console.error('Failed loading theme from storage', err);
+                console.error("Failed loading theme from storage", err);
             } finally {
                 setIsLoaded(true);
             }
-
-        }
+        };
         loadStoredTheme();
-    }, [])
+    }, []);
 
     const toggleTheme = () => {
-        setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
     };
 
     if (!isLoaded) return <CustomLoader />;
