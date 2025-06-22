@@ -45,8 +45,7 @@ export function CharacterListHeader({
             headerLeft: () =>
                 !isConnected ? (
                     <View style={styles.headerNoInetAlert}>
-                        <Icon name="noInet" size={12} color={iconColor}></Icon>{" "}
-                        {/*wtf???*/}
+                        <Icon name="noInet" size={12} color={iconColor}></Icon>
                         <Text style={[globalStyles.fontR16, { color: tint }]}>
                             Offline
                         </Text>
