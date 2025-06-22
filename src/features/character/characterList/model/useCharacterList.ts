@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCharacters } from "@/src/features/character/api/getCharacters";
 import { getFilteredCharacters } from "@/src/features/character/api/getFilteredCharacters";
 import { Character } from "@/src/entities/character";
-import { loadOfflineCharacters } from "@/src/services/offlineCharacters/loadOfflineCharacters";
+import { loadOfflineCharacters } from "@/src/features/character/storage/offlineCharacters/loadOfflineCharacters";
 import { useInternet } from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
 import { showSimpleAlert } from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
 import { checkInternetConnection } from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";

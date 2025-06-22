@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { useCachedResources } from "@/src/shared/hooks/resources/useCachedResources";
 import { View, ActivityIndicator } from "react-native";
 import { useThemeColors } from "@/src/shared/hooks/useThemeColor";
-import { ThemeProvider } from "@/src/app-providers/ThemeProvider/theme-context";
+import { ThemeProvider } from "@/src/app-providers/ThemeProvider/context/theme-context";
 import { CheckInternetProvider } from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
 
 export default function RootLayout() {
