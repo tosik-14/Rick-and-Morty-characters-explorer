@@ -20,6 +20,7 @@ export default function TabsLayout () {
                     fontSize: 30,
                     color: '#02B0C9',
                 },
+                headerTitleAlign: 'center',
 
                 tabBarStyle: {
                     height: 75,
