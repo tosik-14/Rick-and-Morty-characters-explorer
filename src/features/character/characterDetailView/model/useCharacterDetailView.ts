@@ -16,7 +16,6 @@ interface Props {
 export default function useCharacterDetailView({ characterId }: Props) {
     const [character, setCharacter] = useState<Character | null>(null);
     const [locationUrls, setLocationUrls] = useState<NamedLocationUrl[]>([]);
-    /*const [episodeDetails, setEpisodeDetails] = useState<Episode[]>([]);*/
     const [episodeUrls, setEpisodeUrls] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -64,20 +63,7 @@ export default function useCharacterDetailView({ characterId }: Props) {
 
 
         } catch (err: any) {
-            if (err.message === 'Network request failed') {
-                Alert.alert(
-                    'No Internet Connection',
-                    'Please check your internet connection and try again.',
-                    [{ text: 'Try again', onPress: () => {
-                            setTimeout(() => {
-                                loadSingleCharacter(characterToLoad);
-                            }, 4000);
-                        }
-                    }]
-                );
-            } else {
-                setError('Failed to load character');
-            }
+            setError('Failed to load character');
         } finally {
             setLoading(false);
         }
