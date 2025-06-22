@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Text, View, StyleSheet, Dimensions } from 'react-native';
-import {useCustomLoader} from "./useCustomLoader";
-import {styles} from './CustomLoader.styles';
+import {useCustomLoader} from "@/src/shared/ui/CustomLoader/useCustomLoader";
+import {styles} from '@/src/shared/ui/CustomLoader/CustomLoader.styles';
 import {globalStyles} from "../../styles/globalStyles";
 
 export const CustomLoader = () => {

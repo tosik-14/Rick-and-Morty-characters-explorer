@@ -36,6 +36,7 @@ const iconMap: Record<string, any> = {
     'settings': require('../assets/images/icons/settingsIcon.png'),
     'filter': require('../assets/images/icons/filterIcon.png'),
     'backArrow': require('../assets/images/icons/backArrowIcon.png'),
+    'noInet': require('../assets/images/icons/noInternetConnectionIcon.png'),
 };
 
 export default Icon;
