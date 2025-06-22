@@ -32,7 +32,7 @@ export default function useLocationCard(locations: NamedLocationUrl[]) {
             }
 
             const ids = parsed.map(loc => loc.id);
-            const locationsData = await getMultipleLocations(ids.join(','));
+            const locationsData = await getMultipleLocations(ids);
 
 
 

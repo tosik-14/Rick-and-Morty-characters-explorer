@@ -1,4 +1,4 @@
-export async function getSingleCharacter(characterId) {
+export async function getSingleCharacter(characterId: number) {
     const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/character/${characterId}`);
 
     if(!response.ok){

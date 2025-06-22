@@ -26,7 +26,7 @@ export default function useEpisodeCard ({episodeUrls} : EpisodeCardProps) {
                 return;
             }
 
-            const episodesData = await getMultipleEpisodes(parsed.join(','));
+            const episodesData = await getMultipleEpisodes(parsed);
 
             const episodeArray = Array.isArray(episodesData) ? episodesData : [episodesData];
 

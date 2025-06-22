@@ -6,7 +6,7 @@ import {LocationLabelEnum} from "@/src/entities/location/NamedLocationModel/Loca
 import {getSingleCharacter} from '@/src/entities/character/api/getSingleCharacter';
 
 interface Props {
-    characterId: string;
+    characterId: number;
 }
 
 export default function useCharacterDetailView({ characterId }: Props) {
@@ -30,7 +30,7 @@ export default function useCharacterDetailView({ characterId }: Props) {
         }
     }, [character]);
 
-    const loadSingleCharacter = async (characterToLoad: string) => {
+    const loadSingleCharacter = async (characterToLoad: number) => {
 
         if (loading) return;
 
