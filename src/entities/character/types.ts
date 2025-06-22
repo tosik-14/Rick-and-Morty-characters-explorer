@@ -1,10 +1,13 @@
+import {characterStatusEnum} from "@/src/entities/character/characterStatusEnum";
+import {characterGenderEnum} from "@/src/entities/character/characterGenderEnum";
+
 export interface Character {
     id: number;
     name: string;
-    status: 'Alive' | 'Dead' | 'unknown';
+    status: characterStatusEnum;
     species: string;
     type: string;
-    gender: 'Female' | 'Male' | 'Genderless' | 'unknown';
+    gender: characterGenderEnum;
     origin: {
         name: string;
         url: string;
