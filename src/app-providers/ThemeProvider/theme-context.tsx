@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Appearance } from 'react-native';
-import { loadTheme } from "../../services/storage/loadTheme";
-import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
+import { loadTheme } from "@/src/services/storage/loadTheme";
+import {CustomLoader} from "@/src/shared/ui/CustomLoader/CustomLoader";
 
 
 type ThemeType = 'light' | 'dark';

@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
-//import { getNetworkStateAsync } from 'expo-network';
 import {checkInternetConnection} from "@/src/app-providers/CheckInternerProvider/utils/checkInetConnection";
 
 type InternetContextType = {
@@ -14,8 +13,6 @@ export const CheckInternetProvider: React.FC<{children: React.ReactNode }> = ({c
     const checkConnection = async () => {
         const result = await checkInternetConnection();
         setIsConnected(result);
-        /*const status = await getNetworkStateAsync();
-        setIsConnected(status.isConnected && status.isInternetReachable !== false);*/
     }
     useEffect(() => {
         checkConnection();

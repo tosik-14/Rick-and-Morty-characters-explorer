@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router"
-import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import Icon from '../../shared/ui/Icon';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
+import Icon from '@/src/shared/ui/Icon';
 
 export default function TabsLayout () {
 

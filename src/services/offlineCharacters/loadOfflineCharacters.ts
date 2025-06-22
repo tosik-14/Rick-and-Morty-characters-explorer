@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Character } from '../../entities/character/types';
+import { Character } from '@/src/entities/character/types';
 
 export async function loadOfflineCharacters(): Promise<Character[] | null> {
     try {

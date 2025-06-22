@@ -1,4 +1,4 @@
-import CharacterDetailView from '../../pages/CharacterDetailView/CharacterDetailView';
+import CharacterDetailView from '@/src/pages/CharacterDetailView/CharacterDetailView';
 import { useLocalSearchParams } from "expo-router";
 import { useNavigation } from '@react-navigation/native';
 

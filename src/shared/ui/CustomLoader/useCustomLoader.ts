@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Text, View, StyleSheet, Dimensions } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Animated,  Dimensions } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 

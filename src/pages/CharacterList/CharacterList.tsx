@@ -1,15 +1,12 @@
-import React, {useState, useLayoutEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import { Pressable, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useCharacterList } from '../../features/character/characterList/model/useCharacterList';
-import { styles } from './CharacterList.styles';
-import Icon from '../../shared/ui/Icon';
-import CharacterCard from '../../features/character/ui/CharacterCard/ui/CharacterCard'
-import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import DropDownFilters from '../../features/character/DropDownFilters/DropDownFilters';
-import {globalStyles} from "../../shared/styles/globalStyles";
-import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
-import {showSimpleAlert} from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
+import { useCharacterList } from '@/src/features/character/characterList/model/useCharacterList';
+import { styles } from '@/src/pages/CharacterList/CharacterList.styles';
+import CharacterCard from '@/src/features/character/ui/CharacterCard/ui/CharacterCard'
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
+import DropDownFilters from '@/src/features/character/DropDownFilters/DropDownFilters';
+import {CustomLoader} from "@/src/shared/ui/CustomLoader/CustomLoader";
 import {CharacterListHeader} from "@/src/features/character/ui/CharacterListHeader/CharacterListHeader";
 
 export default function CharacterList({ navigation }) {

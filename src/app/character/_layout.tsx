@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { useThemeColors } from '../../shared/hooks/useThemeColor';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
 
 export default function CharacterLayout() {
     const {

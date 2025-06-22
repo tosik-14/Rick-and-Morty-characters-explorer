@@ -1,9 +1,5 @@
 import { getNetworkStateAsync } from 'expo-network';
 
-/**
- * Немедленно проверяет наличие подключения к интернету.
- * Возвращает true, если устройство подключено к сети и интернет доступен.
- */
 export const checkInternetConnection = async (): Promise<boolean> => {
     try {
         const status = await getNetworkStateAsync();

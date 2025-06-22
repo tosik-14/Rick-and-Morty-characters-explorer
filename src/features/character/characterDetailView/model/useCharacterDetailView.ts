@@ -1,13 +1,9 @@
-import {Alert} from 'react-native';
 import {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Character} from '../../../../entities/character/types';
+import {Character} from '@/src/entities/character/types';
 import {NamedLocationUrl} from "@/src/entities/location/NamedLocationModel/types";
 import {LocationLabelEnum} from "@/src/entities/location/NamedLocationModel/LocationLabelEnum";
-import {Episode} from '../../../../entities/episode/types';
 import {getSingleCharacter} from '@/src/entities/character/api/getSingleCharacter';
-import {getMultipleEpisodes} from '../../../episode/api/getMultipleEpisodes';
-import {parseIdFromUrl} from "@/src/shared/lib/parseIdFromUrl";
 
 interface Props {
     characterId: string;

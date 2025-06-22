@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
-import { useCachedResources } from '../shared/hooks/resources/useCachedResources';
+import { useCachedResources } from '@/src/shared/hooks/resources/useCachedResources';
 import { View, ActivityIndicator } from 'react-native';
-import { useThemeColors } from '../shared/hooks/useThemeColor';
-import { ThemeProvider } from '../app-providers/ThemeProvider/theme-context';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
+import { ThemeProvider } from '@/src/app-providers/ThemeProvider/theme-context';
 import {CheckInternetProvider} from "@/src/app-providers/CheckInternerProvider/CheckInternetProvider";
 
 export default function RootLayout() {

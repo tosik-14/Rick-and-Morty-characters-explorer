@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
-import { useThemeColors } from '../../../shared/hooks/useThemeColor';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
 import { styles } from '@/src/features/location/ui/LocationCard.styles';
-import {globalStyles} from "../../../shared/styles/globalStyles";
+import {globalStyles} from "@/src/shared/styles/globalStyles";
 import useLocationCard from "@/src/features/location/model/useLocationCard";
 import {NamedLocationUrl} from "@/src/entities/location/NamedLocationModel/types";
 import {LocationLabelEnum} from "@/src/entities/location/NamedLocationModel/LocationLabelEnum";

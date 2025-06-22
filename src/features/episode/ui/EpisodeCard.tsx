@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
-import { useThemeColors } from '../../../shared/hooks/useThemeColor';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
 import { styles } from '@/src/features/episode/ui/EpisodeCard.styles';
-import {globalStyles} from "../../../shared/styles/globalStyles";
+import {globalStyles} from "@/src/shared/styles/globalStyles";
 import React from "react";
 import useEpisodeCard from "@/src/features/episode/model/useEpisodeCard";
 

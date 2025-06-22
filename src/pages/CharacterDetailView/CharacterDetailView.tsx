@@ -1,13 +1,13 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import { styles } from './CharacterDetailView.styles';
-import {globalStyles} from "../../shared/styles/globalStyles";
-import useCharacterDetailView from '../../features/character/characterDetailView/model/useCharacterDetailView';
-import {LocationCard} from '../../features/location/ui/LocationCard';
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
+import { styles } from '@/src/pages/CharacterDetailView/CharacterDetailView.styles';
+import {globalStyles} from "@/src/shared/styles/globalStyles";
+import useCharacterDetailView from '@/src/features/character/characterDetailView/model/useCharacterDetailView';
+import {LocationCard} from '@/src/features/location/ui/LocationCard';
 import {EpisodeCard} from "@/src/features/episode/ui/EpisodeCard";
-import Icon from '../../shared/ui/Icon';
+import Icon from '@/src/shared/ui/Icon';
 import React, {useLayoutEffect} from "react";
-import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
+import {CustomLoader} from "@/src/shared/ui/CustomLoader/CustomLoader";
 import {CharacterDetails} from "@/src/features/character/characterDetailView/ui/CharacterDetails";
 
 interface CharacterIdProps {

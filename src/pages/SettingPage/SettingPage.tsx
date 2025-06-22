@@ -1,12 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useSettingPage } from '../../features/settingPage/model/useSettingPage';
-import { styles } from './SettingPage.styles';
-import {globalStyles} from "../../shared/styles/globalStyles";
-import Icon from '../../shared/ui/Icon';
-import CharacterCard from '../../features/character/ui/CharacterCard/ui/CharacterCard'
-import { useThemeColors } from '../../shared/hooks/useThemeColor';
-import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
+import { useSettingPage } from '@/src/features/settingPage/model/useSettingPage';
+import { styles } from '@/src/pages/SettingPage/SettingPage.styles';
+import {globalStyles} from "@/src/shared/styles/globalStyles";
+import { useThemeColors } from '@/src/shared/hooks/useThemeColor';
 
 
 export default function CharactersListScreen() {
@@ -23,7 +20,6 @@ export default function CharactersListScreen() {
     return (
         <View style={[styles.container, { backgroundColor }]}>
 
-            {/*<CustomLoader  />*/}
             <Text style={[globalStyles.fontR16, styles.theme, { color: textColor }]}>{isDarkTheme ? 'Dark Theme' : 'Light Theme'}</Text>
 
 

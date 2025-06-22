@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Character } from '../../entities/character/types';
-import {getCharacters} from "../api/getCharacters";
+import { Character } from '@/src/entities/character/types';
+import {getCharacters} from "@/src/features/character/api/getCharacters";
 
 export async function getOfflineCharacters() {
     try {
