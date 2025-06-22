@@ -4,7 +4,7 @@
     "slug": "Rick-and-Morty",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/adaptive-icon.png",
     "scheme": "rickandmorty",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -16,7 +16,6 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
       "package": "com.tosik.rickandmorty"
     },
     "web": {
