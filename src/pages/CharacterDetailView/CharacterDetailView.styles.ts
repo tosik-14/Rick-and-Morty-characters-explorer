@@ -5,18 +5,6 @@ export const styles = StyleSheet.create({
         flex: 1,
         padding: 16,
     },
-    avatar: {
-        width: '100%',
-        maxWidth: 360,
-        height: 360,
-        borderRadius: 12,
-        marginBottom: 8,
-
-    },
-
-    name: {
-        fontSize: 28,
-    },
 
     justLine: {
         height: 1,
@@ -29,38 +17,10 @@ export const styles = StyleSheet.create({
         opacity: 0.5,
     },
 
-    infoBlock: {
-        flexDirection: 'row',
-        gap: 30,
-        flex: 1,
-    },
 
-    metaTitlesJustify: {
-        alignItems: 'flex-end',
-    },
 
     label: {
         marginBottom: 4,
-    },
-    value: {
-        fontSize: 16,
-        marginBottom: 4,
-    },
-
-    statusRow: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-
-    statusCircle: {
-        marginRight: 6,
-        marginBottom: 2,
-    },
-
-    characterInfo: {
-        alignSelf: 'stretch', // или width: '100%'
-        flexDirection: 'column',
     },
 
     loadingContainer: {

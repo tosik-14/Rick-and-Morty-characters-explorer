@@ -28,6 +28,15 @@ export const styles = StyleSheet.create({
         marginRight: 20,
     },
 
+    headerNoInetAlert: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 5,
+        //paddingLeft: 10,
+    },
+
     overlay: {
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,

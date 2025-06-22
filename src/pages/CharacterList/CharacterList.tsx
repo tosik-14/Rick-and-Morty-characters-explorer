@@ -9,6 +9,8 @@ import { useThemeColors } from '../../shared/hooks/useThemeColor';
 import DropDownFilters from '../../features/character/DropDownFilters/DropDownFilters';
 import {globalStyles} from "../../shared/styles/globalStyles";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
+import {showSimpleAlert} from "@/src/shared/ui/showSimpleAlert/showSimpleAlert";
+import {CharacterListHeader} from "@/src/features/character/ui/CharacterListHeader/CharacterListHeader";
 
 export default function CharacterList({ navigation }) {
     const [showFilters, setShowFilters] = useState(false);
@@ -21,7 +23,8 @@ export default function CharacterList({ navigation }) {
         loadMore,
         error,
         filters,
-        setFilter
+        setFilter,
+        isConnected,
     } = useCharacterList();
 
     const {
@@ -51,19 +54,14 @@ export default function CharacterList({ navigation }) {
         );
     }
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <TouchableOpacity onPress={() => setShowFilters(prev => !prev)}>
-                    <View style={styles.headerFilterButton}>
-                        <Icon name="filter" size={12} color={iconColor}></Icon>
-                        <Text style={[globalStyles.fontR16, { color: tint }]}>Filter</Text>
-                    </View>
-
-                </TouchableOpacity>
-            ),
-        });
-    }, [navigation, tint, iconColor]);
+    CharacterListHeader({
+        navigation,
+        isConnected,
+        iconColor,
+        tint,
+        setShowFilters,
+        styles,
+    });
 
     return (
         <View style={[styles.container, {backgroundColor}]}>

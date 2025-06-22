@@ -8,6 +8,7 @@ import {EpisodeCard} from "@/src/features/episode/ui/EpisodeCard";
 import Icon from '../../shared/ui/Icon';
 import React, {useLayoutEffect} from "react";
 import {CustomLoader} from "../../shared/ui/CustomLoader/CustomLoader";
+import {CharacterDetails} from "@/src/features/character/characterDetailView/ui/CharacterDetails";
 
 interface CharacterIdProps {
     characterId: string;
@@ -26,10 +27,6 @@ export default function CharacterDetailView({ characterId, navigation } : Charac
     const {
         backgroundColor,
         textColor,
-        metaTextColor,
-        unknownStatus,
-        aliveStatus,
-        deathStatus,
         iconColor,
     } = useThemeColors();
 
@@ -71,37 +68,8 @@ export default function CharacterDetailView({ characterId, navigation } : Charac
                 alignItems: 'center',
             }}
         >
-            <Image source={{ uri: character.image }} style={styles.avatar} />
 
-            <Text style={[globalStyles.fontB20, styles.name, { color: textColor }]}>{character.name}</Text>
-
-            <View style={styles.justLine} />
-
-            <View style={styles.infoBlock}>
-
-                <View style={styles.metaTitlesJustify}>
-                    <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Status:</Text>
-                    <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Gender:</Text>
-                    <Text style={[globalStyles.fontB16, styles.label, { color: metaTextColor }]}>Species:</Text>
-                </View>
-
-                <View style={styles.characterInfo}>
-                    <View style={styles.statusRow}>
-                        <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.status}{'  '}</Text>
-                        <Icon name="status" size={10} color={
-                            character.status === 'Alive' ? aliveStatus
-                                : character.status === 'Dead' ? deathStatus : unknownStatus
-                        }
-                              style={styles.statusCircle}
-                        />
-                    </View>
-
-                    <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.gender}</Text>
-                    <Text style={[globalStyles.fontR16, styles.value, { color: textColor }]}>{character.species}</Text>
-                </View>
-
-            </View>
-
+            <CharacterDetails character={character}/>
 
             <View style={styles.justLine} />
 
